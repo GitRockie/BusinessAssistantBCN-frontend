@@ -1,36 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { PagesModule } from './pages/pages.module';
-
-import { AuthModule } from './auth/auth.module';
-
 import { AppComponent } from './app.component';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+// import { HeaderComponent } from './shared/header/header.component';
+// import { FooterComponent } from './shared/footer/footer.component';
+// import { MenuComponent } from './shared/menu/menu.component';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './modules/home/home.module';
 
 
-import { NopagefoundComponent } from './nopagefound/nopagefound.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InterceptorService } from './helpers/interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NopagefoundComponent
+    // HeaderComponent,
+    // FooterComponent,
+    // MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
-    AuthModule,
-    
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
-      multi: true
-    }
+
+    FontAwesomeModule,
+    SweetAlert2Module.forRoot(),
+    SharedModule,
+    HomeModule
+
   ],
   bootstrap: [AppComponent]
 })
